@@ -1,0 +1,61 @@
+* {
+	transition: all 1s ease-in-out;
+}
+h1 {
+	text-align: center;
+}
+
+.flex {
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+	/* align-items: center; */
+	width: 100%;
+}
+
+.container {
+	width: 300px;
+	min-height: 100px;
+	padding-bottom: 40px;
+	border: 1px solid gray;
+	box-shadow: 0 0 5px #360436;
+	/* margin: 0 auto; */
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.container p {
+	text-align: center;
+}
+
+img {
+	margin: 0 auto;
+	width: 100%;
+}
+
+#count-phone,
+#count-tab,
+#count-tv {
+	font-weight: 800;
+	font-size: 30px;
+}
+
+button {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	/* margin: 10px; */
+	border: 1px solid purple;
+	background-color: purple;
+	padding: 10px;
+	color: #fff;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+button:hover {
+	border: 1px solid #25031d;
+	background-color: #25031d;
+}
