@@ -3,7 +3,7 @@ import phone from '../assets/images/phone.jpg';
 import { useSelector, useDispatch } from 'react-redux';
 import { buyPhone } from '../redux/phone/actionPhone';
 
-const PhoneComponent = (props) => {
+const PhoneContainer = (props) => {
 	const phones = useSelector((state) => state.phones);
 	const dispatch = useDispatch();
 	return (
@@ -11,7 +11,7 @@ const PhoneComponent = (props) => {
 			<img src={phone} alt='phone' />
 			<p>
 				Disponibilite:
-				<span id='count'>{phones}</span>
+				<span id='count'>{phones.phones}</span>
 			</p>
 			<button onClick={() => dispatch(buyPhone())}>Acheter</button>
 		</div>
@@ -33,4 +33,4 @@ const PhoneComponent = (props) => {
 
 // export default connect(mapStateToProps, mapDispatchToProps)(PhoneComponent);
 
-export default PhoneComponent;
+export default PhoneContainer;

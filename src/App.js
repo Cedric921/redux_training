@@ -1,11 +1,13 @@
-import PhoneComponent from './components/Phone';
+import PhoneContainer from './components/PhoneContainer';
+import TvContainer from './components/TvContainer';
 
 function App() {
 	return (
 		<div className='App'>
 			<h1>Shop</h1>
 			<div className='flex'>
-				<PhoneComponent />
+				<PhoneContainer />
+				<TvContainer />
 			</div>
 		</div>
 	);
