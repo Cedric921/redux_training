@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import phone from '../assets/images/phone.jpg';
 import { useSelector, useDispatch } from 'react-redux';
 import { buyPhone } from '../redux/phone/actionPhone';
@@ -6,6 +6,7 @@ import { buyPhone } from '../redux/phone/actionPhone';
 const PhoneContainer = (props) => {
 	const phones = useSelector((state) => state.phones);
 	const dispatch = useDispatch();
+	const [num, setNum] = useState(0);
 	return (
 		<div className='container'>
 			<img src={phone} alt='phone' />
@@ -13,7 +14,16 @@ const PhoneContainer = (props) => {
 				Disponibilite:
 				<span id='count'>{phones.phones}</span>
 			</p>
-			<button onClick={() => dispatch(buyPhone())}>Acheter</button>
+			<div className='input'>
+				<label htmlFor=''>Nombre</label>
+				<input
+					type='number'
+					value={num}
+					name='nombre'
+					onChange={(e) => setNum(e.target.value)}
+				/>
+			</div>
+			<button onClick={() => dispatch(buyPhone(num))}>Acheter</button>
 		</div>
 	);
 };

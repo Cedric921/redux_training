@@ -34,11 +34,23 @@ img {
 	width: 100%;
 }
 
-#count-phone,
-#count-tab,
-#count-tv {
+#count {
 	font-weight: 800;
-	font-size: 30px;
+	color: #8b0b8b;
+	font-size: large;
+}
+
+.input {
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+}
+
+input {
+	margin-top: 5px;
+	padding: 5px;
+	border: 2px solid purple;
+	border-radius: 1px;
 }
 
 button {
