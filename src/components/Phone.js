@@ -1,6 +1,7 @@
 import React from 'react';
 import phone from '../assets/images/phone.jpg';
 import { connect } from 'react-redux';
+import { buyPhone } from '../redux/phone/actionPhone';
 
 const PhoneComponent = (props) => {
 	return (
@@ -10,7 +11,7 @@ const PhoneComponent = (props) => {
 				Disponibilite:
 				<span id='count'>{props.phones}</span>
 			</p>
-			<button id=''>Acheter</button>
+			<button onClick={props.buyPhone}>Acheter</button>
 		</div>
 	);
 };
@@ -21,4 +22,11 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps)(PhoneComponent);
+const mapDispatchToProps = (dispatch) => {
+	return {
+		buyPhone: () => dispatch(buyPhone()),
+		//we can also do : dispatch({ type: "BUY_PHONE"})
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PhoneComponent);
