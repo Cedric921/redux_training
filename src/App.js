@@ -1,3 +1,4 @@
+import CommentsContainer from './components/CommentsContainer';
 import PhoneContainer from './components/PhoneContainer';
 import TvContainer from './components/TvContainer';
 
@@ -9,6 +10,7 @@ function App() {
 				<PhoneContainer />
 				<TvContainer />
 			</div>
+			<CommentsContainer />
 		</div>
 	);
 }

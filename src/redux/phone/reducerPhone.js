@@ -1,7 +1,7 @@
 import { BUY_PHONE } from './type';
 
 const initialState = {
-	phones: 5,
+	phones: 50,
 };
 
 const phoneReducer = (state = initialState, action) => {

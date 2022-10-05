@@ -1,0 +1,5 @@
+import {
+	LOAD_COMMENTS,
+	LOAD_COMMENTS_SUCCES,
+	LOAD_COMMENTS_ERROR,
+} from './type';
