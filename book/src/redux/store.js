@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import phoneReducer from './phone/reducerPhone';
 import commentsReducer from './comments/reducerComment';
 import tvReducer from './tv/reducerTv';
