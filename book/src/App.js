@@ -1,16 +1,13 @@
-import CommentsContainer from './components/CommentsContainer';
-import PhoneContainer from './components/PhoneContainer';
-import TvContainer from './components/TvContainer';
+import Footer from './components/Footer';
+import Navbar from './components/Navbar';
+import AddBooks from './containers/AddBooks';
 
 function App() {
 	return (
-		<div className='App'>
-			<h1>Shop</h1>
-			<div className='flex'>
-				<PhoneContainer />
-				<TvContainer />
-			</div>
-			<CommentsContainer />
+		<div className='App' style={{ minHeight: '100vh', position: 'relative' }}>
+			<Navbar />
+			<AddBooks />
+			<Footer />
 		</div>
 	);
 }
