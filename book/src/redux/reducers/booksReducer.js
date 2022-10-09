@@ -29,7 +29,8 @@ const AddbookReducer = (state = initialState.books, action) => {
 			break;
 	}
 
-	localStorage.setItem('booksData', JSON.stringify(state));
+	state.length > 0 ?? localStorage.setItem('booksData', JSON.stringify(state));
+	return state;
 };
 
 export default AddbookReducer;
