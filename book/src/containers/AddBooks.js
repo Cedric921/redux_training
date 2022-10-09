@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addBook, deleteBook } from '../redux/actions/booksAction';
+import { addBook, deleteAll, deleteBook } from '../redux/actions/booksAction';
 
 const AddBooks = ({ libraryData }) => {
 	const dispatch = useDispatch();
@@ -22,10 +22,15 @@ const AddBooks = ({ libraryData }) => {
 
 	const handleDelete = (id) => dispatch(deleteBook(id));
 
+	const handleDeleteAll = () => dispatch(deleteAll());
+
 	const handleBook =
 		library.length > 0 ? (
 			library.map((book) => (
-				<li className='list-group-item list-group-danger d-flex justify-content-between align-items-center'>
+				<li
+					key={book.id}
+					className='list-group-item list-group-danger d-flex justify-content-between align-items-center'
+				>
 					<h4>{book.title}</h4>
 					<div>
 						<span>{book.author}</span>
@@ -41,6 +46,12 @@ const AddBooks = ({ libraryData }) => {
 		) : (
 			<p className='text-center'>No book to show</p>
 		);
+
+	const handleDeleteBtn = library.length > 0 && (
+		<button className='btn btn-danger mt-4 mb-5' onClick={handleDeleteAll}>
+			Delete all books
+		</button>
+	);
 
 	return (
 		<main role='main'>
@@ -90,15 +101,11 @@ const AddBooks = ({ libraryData }) => {
 				</div>
 			</div>
 			<div className='container mt-5' style={{ minHeight: 200 }}>
-				<div className='row'>
+				<div className='row pb-5'>
 					<div className='col-md-12'>
 						<ul className='list-group'>{handleBook}</ul>
 					</div>
-					<div className='d-flex justify-content-center'>
-						<button className='btn btn-danger mt-4 mb-5'>
-							Delete all books
-						</button>
-					</div>
+					<div className='d-flex justify-content-center'>{handleDeleteBtn}</div>
 				</div>
 			</div>
 		</main>
