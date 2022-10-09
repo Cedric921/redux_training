@@ -5,7 +5,7 @@ const initialState = {
 };
 
 const addIdHelper = (book) => ({
-	id: new Date().getUTCSeconds(),
+	id: new Date().toISOString().split(':').join('-'),
 	title: book.title,
 	author: book.author,
 });
@@ -15,7 +15,7 @@ const AddbookReducer = (state = initialState.books, action) => {
 
 	switch (action.type) {
 		case ADD_BOOKS:
-			state = [...state.books, addIdHelper(action.payload)];
+			state = [...state, addIdHelper(action.payload)];
 			localStorage.setItem('booksData', JSON.stringify(state));
 			return state;
 

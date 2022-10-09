@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addBook } from '../redux/actions/addBooksAction';
 
-const AddBooks = () => {
+const AddBooks = ({ libraryData }) => {
+	const dispatch = useDispatch();
+	const library = useSelector((state) => state.library);
 	const [state, setState] = useState({
 		title: '',
 		author: '',
@@ -13,8 +17,24 @@ const AddBooks = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(state);
+		dispatch(addBook(state));
 	};
+
+	const handleBook =
+		library.length > 0 ? (
+			library.map((book) => (
+				<li className='list-group-item list-group-danger d-flex justify-content-between align-items-center'>
+					<h4>{book.title}</h4>
+					<div>
+						<span>{book.author}</span>
+						<button className='btn btn-sm btn-danger mx-2'>x</button>
+					</div>
+				</li>
+			))
+		) : (
+			<p>No book to show</p>
+		);
+
 	return (
 		<main role='main'>
 			<div className='jumbotron jumbotron-fluid bg-light p-5'>
@@ -65,11 +85,7 @@ const AddBooks = () => {
 			<div className='container mt-5' style={{ minHeight: 200 }}>
 				<div className='row'>
 					<div className='col-md-12'>
-						<ul className='list-group'>
-							<li className='list-group-item list-group-danger d-flex justify-content-between'>
-								Books saved
-							</li>
-						</ul>
+						<ul className='list-group'>{handleBook}</ul>
 					</div>
 					<div className='d-flex justify-content-center'>
 						<button className='btn btn-danger mt-4 mb-5'>
@@ -82,4 +98,12 @@ const AddBooks = () => {
 	);
 };
 
-export default AddBooks;
+// const addStateToProps = (state) => ({
+// 	libraryData: state.library,
+// });
+
+// const mapDispatchToProps = (dispatch) => {};
+
+// export default connect(addStateToProps, mapDispatchToProps)(AddBooks);
+
+export default React.memo(AddBooks);
