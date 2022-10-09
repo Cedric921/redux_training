@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addBook } from '../redux/actions/addBooksAction';
+import { addBook, deleteBook } from '../redux/actions/booksAction';
 
 const AddBooks = ({ libraryData }) => {
 	const dispatch = useDispatch();
@@ -20,6 +20,8 @@ const AddBooks = ({ libraryData }) => {
 		dispatch(addBook(state));
 	};
 
+	const handleDelete = (id) => dispatch(deleteBook(id));
+
 	const handleBook =
 		library.length > 0 ? (
 			library.map((book) => (
@@ -27,12 +29,17 @@ const AddBooks = ({ libraryData }) => {
 					<h4>{book.title}</h4>
 					<div>
 						<span>{book.author}</span>
-						<button className='btn btn-sm btn-danger mx-2'>x</button>
+						<button
+							className='btn btn-sm btn-danger mx-2 px-2'
+							onClick={() => handleDelete(book.id)}
+						>
+							x
+						</button>
 					</div>
 				</li>
 			))
 		) : (
-			<p>No book to show</p>
+			<p className='text-center'>No book to show</p>
 		);
 
 	return (

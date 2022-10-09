@@ -1,4 +1,4 @@
-import { ADD_BOOKS } from '../constants';
+import { ADD_BOOKS, DELETE_BOOK } from '../constants';
 
 const initialState = {
 	books: [],
@@ -16,6 +16,11 @@ const AddbookReducer = (state = initialState.books, action) => {
 	switch (action.type) {
 		case ADD_BOOKS:
 			state = [...state, addIdHelper(action.payload)];
+			localStorage.setItem('booksData', JSON.stringify(state));
+			return state;
+
+		case DELETE_BOOK:
+			state = state.filter((book) => book.id !== action.payload);
 			localStorage.setItem('booksData', JSON.stringify(state));
 			return state;
 
